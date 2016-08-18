@@ -27,7 +27,7 @@ function loadUsers(username) {
             "status": "error",
             "error": {
                 "code": 408,
-                "message": "Connection error"
+                "message": "CONNECTION_ERROR"
             }
         };
     });
@@ -56,7 +56,7 @@ function renderFoundAccount({account_id, nickname}) {
 }
 
 function renderError(respData) {
-    return '<div>Error</div>'
+    return `<div>${respData.error.message}</div>`
 }
 
 function searchUsersHandler() {
