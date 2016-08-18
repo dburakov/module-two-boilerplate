@@ -16,13 +16,9 @@ function loadUsers(username) {
   return fetch(url, {"method": "GET"})
     .then(response => {
       /* return json data from response */
-      console.log(response.headers.get('Content-Type'));
-      console.log(response.status);
       return response.json();
     })
-    .then(resp_data => resp_data)
     .catch(err => {
-        console.log(err);
         return {
             "status": "error",
             "error": {
@@ -39,13 +35,9 @@ function loadUserData(account_id) {
     return fetch(url, {"method": "GET"})
             .then(response => {
                 /* return json data from response */
-                console.log(response.headers.get('Content-Type'));
-                console.log(response.status);
                 return response.json();
             })
-            .then(resp_data => resp_data)
             .catch(err => {
-                console.log(err);
                 return {
                     "status": "error",
                     "error": {
@@ -89,7 +81,6 @@ function renderUserData(userData) {
 }
 
 function renderUserStatistics(stat) {
-    console.log(stat);
     return `
         <p>Battles = ${stat.battles};</p>
         <p>Wins percent = ${stat.wins/stat.battles*100};</p>
@@ -108,7 +99,6 @@ function markActive(element) {
 }
 
 function searchUsersHandler() {
-  console.log('Search Users');
   const userName = document.getElementById('username');
   const searchResultsEl = document.getElementById('search-results');
     const userDataEl = document.getElementById('user-stats');
