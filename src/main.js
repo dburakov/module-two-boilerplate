@@ -34,6 +34,16 @@ function renderSearchResult(accounts) {
   // inside node with `search-results_item` class name.
 }
 
+function searchUsers() {
+  console.log('Search Users')
+  const userName = document.getElementById('username')
+
+  return loadUsers(userName.value).then(resp_data => console.log(resp_data))
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // add search button click handler here
+  const searchButton = document.getElementById('search')
+
+  searchButton.addEventListener('click', searchUsers)
 })
