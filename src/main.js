@@ -42,7 +42,7 @@ function renderSearchResult(accounts) {
 }
 
 function renderSearchAccount(account) {
-    return '<div></div>'
+    return '<div>#{$account.account_id} - {$account.nickname}</div>'
 }
 
 function searchUsers() {
