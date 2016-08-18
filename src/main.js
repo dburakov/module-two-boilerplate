@@ -15,10 +15,12 @@ function loadUsers(username) {
   // create request to the url and return a promise
   return fetch(url, {"method": "GET"})
     .then(response => {
+      /* return json data from response */
       console.log(response.headers.get('Content-Type'));
       console.log(response.status);
       return response.json();
-    });
+    })
+    .then(resp_data => resp_data.data);
 }
 
 function renderSpinner(domNode) {
