@@ -13,6 +13,12 @@ It will be passed automatically via proxy server
 function loadUsers(username) {
   const url = `${API_PROXY_URL}/${GAME}/account/list/?search=${username}`
   // create request to the url and return a promise
+  return fetch(url, {"method": "GET"})
+    .then(response => {
+      console.log(response.headers.get('Content-Type'));
+      console.log(response.status);
+      return response.json();
+    });
 }
 
 function renderSpinner(domNode) {
