@@ -20,7 +20,17 @@ function loadUsers(username) {
       console.log(response.status);
       return response.json();
     })
-    .then(resp_data => resp_data.data);
+    .then(resp_data => resp_data)
+    .catch(err => {
+        console.log(err);
+        return {
+            "status": "error",
+            "error": {
+                "code": 408,
+                "message": "Connection error"
+            }
+        };
+    });
 }
 
 function renderSpinner(domNode) {
@@ -45,6 +55,10 @@ function renderFoundAccount({account_id, nickname}) {
     return `<div>${account_id} - ${nickname}</div>`
 }
 
+function renderError(respData) {
+    return '<div>Error</div>'
+}
+
 function searchUsersHandler() {
   console.log('Search Users');
   const userName = document.getElementById('username');
@@ -53,7 +67,11 @@ function searchUsersHandler() {
   renderSpinner(searchResultsEl);
   return loadUsers(userName.value)
     .then(resp_data => {
-          searchResultsEl.innerHTML = renderFoundAccounts(resp_data)
+        if (resp_data.status == "error") {
+                searchResultsEl.innerHTML = renderError(resp_data);
+            } else {
+        searchResultsEl.innerHTML = renderFoundAccounts(resp_data.data)
+    }
       }
     )
 }
