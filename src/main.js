@@ -36,20 +36,22 @@ function renderSearchResult(accounts) {
 
   let htmlCache = '';
   for (let account of accounts) {
-      
+      htmlCache += renderSearchAccount(account)
   }
 
+  console.log(htmlCache);
+  searchResultsEl.innerHTML = htmlCache;
 }
 
-function renderSearchAccount(account) {
-    return '<div>#{$account.account_id} - {$account.nickname}</div>'
+function renderSearchAccount({account_id, nickname}) {
+    return `<div>${account_id} - ${nickname}</div>`
 }
 
 function searchUsers() {
   console.log('Search Users')
   const userName = document.getElementById('username')
 
-  return loadUsers(userName.value).then(resp_data => console.log(resp_data))
+  return loadUsers(userName.value).then(resp_data => renderSearchResult(resp_data))
 }
 
 document.addEventListener('DOMContentLoaded', () => {
