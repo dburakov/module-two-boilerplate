@@ -25,9 +25,8 @@ function loadUsers(username) {
 
 function renderSpinner(domNode) {
   // clean all content of passed node and then render element with `spinner` classname
+    domNode.innerHTML = '<div class="spinner"></div>'
 }
-
-function hideSpinner(domNode) {}
 
 function renderFoundAccounts(accounts) {
   // render result to the node with class name `search-results`
@@ -54,7 +53,6 @@ function searchUsersHandler() {
   renderSpinner(searchResultsEl);
   return loadUsers(userName.value)
     .then(resp_data => {
-          hideSpinner(searchResultsEl);
           searchResultsEl.innerHTML = renderFoundAccounts(resp_data)
       }
     )
