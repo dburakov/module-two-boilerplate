@@ -33,8 +33,27 @@ function loadUsers(username) {
     });
 }
 
-function loadUderData(account_id) {
-    console.log('loadUderData');
+function loadUserData(account_id) {
+    const url = `${API_PROXY_URL}/${GAME}/account/info/?account_id=${account_id}`
+
+    return fetch(url, {"method": "GET"})
+            .then(response => {
+                /* return json data from response */
+                console.log(response.headers.get('Content-Type'));
+                console.log(response.status);
+                return response.json();
+            })
+            .then(resp_data => resp_data)
+            .catch(err => {
+                console.log(err);
+                return {
+                    "status": "error",
+                    "error": {
+                        "code": 408,
+                        "message": "CONNECTION_ERROR"
+                    }
+                };
+            });
 }
 
 function renderSpinner(domNode) {
@@ -63,10 +82,16 @@ function renderError(respData) {
     return `<div>${respData.error.message}</div>`
 }
 
+function renderUserData(userData) {
+    console.log(userData)
+    return ''
+}
+
 function searchUsersHandler() {
   console.log('Search Users');
   const userName = document.getElementById('username');
   const searchResultsEl = document.getElementById('search-results');
+    const userDataEl = document.getElementById('user-stats');
 
   renderSpinner(searchResultsEl);
   loadUsers(userName.value)
@@ -80,8 +105,15 @@ function searchUsersHandler() {
         let usersCollection = document.getElementsByClassName('js-user');
         for (let user of usersCollection) {
             user.addEventListener('click', event => {
-            let account_id = event.currentTarget.dataAccountId;
-            loadUderData(account_id);
+            let account_id = event.currentTarget.dataset.accountId;
+
+                renderSpinner(userDataEl);
+
+            const userData =loadUserData(account_id);
+
+            userData.then(user_json => {
+                userDataEl.innerHTML = renderUserData(user_json.data[account_id])
+            })
         })}
       }
     )
