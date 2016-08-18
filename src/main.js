@@ -10,59 +10,46 @@ you don't have to pass application_id query param.
 It will be passed automatically via proxy server
 */
 
-function loadUsers(username) {
-  const url = `${API_PROXY_URL}/${GAME}/account/list/?search=${username}`
-  // create request to the url and return a promise
-  return fetch(url, {"method": "GET"})
-    .then(response => {
-      /* return json data from response */
-      return response.json();
-    })
-    .catch(err => {
-        return {
-            "status": "error",
-            "error": {
-                "code": 408,
-                "message": "CONNECTION_ERROR"
-            }
-        };
-    });
+function sendRequset(url) {
+    return fetch(url, {"method": "GET"})
+        .then(response => {
+            /* return json data from response */
+            return response.json();
+        })
+        .catch(err => {
+            return {
+                "status": "error",
+                "error": {
+                    "code": 408,
+                    "message": "CONNECTION_ERROR"
+                }
+            };
+        });
 }
 
-function loadUserData(account_id) {
-    const url = `${API_PROXY_URL}/${GAME}/account/info/?account_id=${account_id}`
+function loadUsers(username) {
+    const url = `${API_PROXY_URL}/${GAME}/account/list/?search=${username}`;
 
-    return fetch(url, {"method": "GET"})
-            .then(response => {
-                /* return json data from response */
-                return response.json();
-            })
-            .catch(err => {
-                return {
-                    "status": "error",
-                    "error": {
-                        "code": 408,
-                        "message": "CONNECTION_ERROR"
-                    }
-                };
-            });
+    return sendRequset(url);
+}
+
+function loadUser(account_id) {
+    const url = `${API_PROXY_URL}/${GAME}/account/info/?account_id=${account_id}`;
+
+    return sendRequset(url);
 }
 
 function renderSpinner(domNode) {
-  // clean all content of passed node and then render element with `spinner` classname
     domNode.innerHTML = '<div class="spinner"></div>'
 }
 
 function renderFoundAccounts(accounts) {
-  // render result to the node with class name `search-results`
-  // Note! it's already exist. See index.html for more info.
-  // Each search result item should be rendered
-  // inside node with `search-results_item` class name
+    let htmlCache = '';
 
-  let htmlCache = '';
-  for (let account of accounts) {
+    for (let account of accounts) {
       htmlCache += renderFoundAccount(account)
-  }
+    }
+
     return htmlCache;
 }
 
@@ -99,12 +86,12 @@ function markActive(element) {
 }
 
 function searchUsersHandler() {
-  const userName = document.getElementById('username');
-  const searchResultsEl = document.getElementById('search-results');
+    const userName = document.getElementById('username');
+    const searchResultsEl = document.getElementById('search-results');
     const userDataEl = document.getElementById('user-stats');
 
-  renderSpinner(searchResultsEl);
-  loadUsers(userName.value)
+    renderSpinner(searchResultsEl);
+    loadUsers(userName.value)
     .then(resp_data => {
         if (resp_data.status == "error") {
                 searchResultsEl.innerHTML = renderError(resp_data);
@@ -119,7 +106,7 @@ function searchUsersHandler() {
                 markActive(event.currentTarget);
                 renderSpinner(userDataEl);
 
-            const userData =loadUserData(account_id);
+            const userData =loadUser(account_id);
 
             userData.then(user_json => {
                 userDataEl.innerHTML = renderUserData(user_json.data[account_id])
@@ -130,7 +117,6 @@ function searchUsersHandler() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // add search button click handler here
   const searchButton = document.getElementById('search')
 
   searchButton.addEventListener('click', searchUsersHandler)
