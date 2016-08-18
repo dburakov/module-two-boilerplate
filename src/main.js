@@ -1,3 +1,5 @@
+require('./main.css');
+
 const API_PROXY_URL = 'http://188.166.73.133/wg-api';
 
 const GAME = 'wot';
@@ -11,61 +13,61 @@ It will be passed automatically via proxy server
 */
 
 
-class BaseLoader {
-    /* Perform request to WG Public API and postprocess data */
-    host = 'http://188.166.73.133/wg-api';
-    game = 'wot';
-    path = '';
-
-    make() {
-        let response = this.load();
-        return this.postprocess(response);
-    }
-
-    load() {
-        /* Make request and return response */
-        let url = this.buildURL();
-        return fetch(url)
-            .then(response => {
-                /* return json data from response */
-                return response;
-            })
-            .catch(err => {
-                /* hardcoded connection error catch */
-                return {
-                    "status": "error",
-                    "error": {
-                        "code": 408,
-                        "message": "CONNECTION_ERROR"
-                    }
-                };
-            });
-    }
-
-    buildURL() {
-        return `${this.host}/${this.game}`;
-    }
-
-    postprocess(response) {
-        return response.json();
-    }
-}
-
-class UsersLoader extends BaseLoader {
-    path = '/account/list/';
-
-    constructor(nickNamePrefix) {
-        this.nickNamePrefix = nickNamePrefix;
-    }
-
-    buildURL() {
-        return `super.buildURL()/${path}?search=${this.nickNamePrefix}`;
-    }
-}
-
-class ProfileLoader extends BaseLoader {
-
-}
+// class BaseLoader {
+//     /* Perform request to WG Public API and postprocess data */
+//     host = 'http://188.166.73.133/wg-api';
+//     game = 'wot';
+//     path = '';
+//
+//     make() {
+//         let response = this.load();
+//         return this.postprocess(response);
+//     }
+//
+//     load() {
+//         /* Make request and return response */
+//         let url = this.buildURL();
+//         return fetch(url)
+//             .then(response => {
+//                 /* return json data from response */
+//                 return response;
+//             })
+//             .catch(err => {
+//                 /* hardcoded connection error catch */
+//                 return {
+//                     "status": "error",
+//                     "error": {
+//                         "code": 408,
+//                         "message": "CONNECTION_ERROR"
+//                     }
+//                 };
+//             });
+//     }
+//
+//     buildURL() {
+//         return `${this.host}/${this.game}`;
+//     }
+//
+//     postprocess(response) {
+//         return response.json();
+//     }
+// }
+//
+// class UsersLoader extends BaseLoader {
+//     path = '/account/list/';
+//
+//     constructor(nickNamePrefix) {
+//         this.nickNamePrefix = nickNamePrefix;
+//     }
+//
+//     buildURL() {
+//         return `super.buildURL()/${path}?search=${this.nickNamePrefix}`;
+//     }
+// }
+//
+// class ProfileLoader extends BaseLoader {
+//
+// }
 
 function sendRequset(url) {
     return fetch(url, {"method": "GET"})
@@ -84,8 +86,6 @@ function sendRequset(url) {
         });
 }
 
-
-class
 
 function loadUsers(username) {
     const url = `${API_PROXY_URL}/${GAME}/account/list/?search=${username}`;

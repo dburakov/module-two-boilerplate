@@ -4,6 +4,7 @@
   "description": "The Wargaming User stats single page application",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/ABKorotky/module-two-boilerplate/issues"
   },
-  "homepage": "https://github.com/ABKorotky/module-two-boilerplate#readme"
+  "homepage": "https://github.com/ABKorotky/module-two-boilerplate#readme",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.14.1"
+  }
 }
