@@ -27,36 +27,42 @@ function renderSpinner(domNode) {
   // clean all content of passed node and then render element with `spinner` classname
 }
 
-function renderSearchResult(accounts) {
+function hideSpinner(domNode) {}
+
+function renderFoundAccounts(accounts) {
   // render result to the node with class name `search-results`
   // Note! it's already exist. See index.html for more info.
   // Each search result item should be rendered
-  // inside node with `search-results_item` class name.
-  const searchResultsEl = document.getElementById('search-results');
+  // inside node with `search-results_item` class name
 
   let htmlCache = '';
   for (let account of accounts) {
-      htmlCache += renderSearchAccount(account)
+      htmlCache += renderFoundAccount(account)
   }
-
-  console.log(htmlCache);
-  searchResultsEl.innerHTML = htmlCache;
+    return htmlCache;
 }
 
-function renderSearchAccount({account_id, nickname}) {
+function renderFoundAccount({account_id, nickname}) {
     return `<div>${account_id} - ${nickname}</div>`
 }
 
-function searchUsers() {
-  console.log('Search Users')
-  const userName = document.getElementById('username')
+function searchUsersHandler() {
+  console.log('Search Users');
+  const userName = document.getElementById('username');
+  const searchResultsEl = document.getElementById('search-results');
 
-  return loadUsers(userName.value).then(resp_data => renderSearchResult(resp_data))
+  renderSpinner(searchResultsEl);
+  return loadUsers(userName.value)
+    .then(resp_data => {
+          hideSpinner(searchResultsEl);
+          searchResultsEl.innerHTML = renderFoundAccounts(resp_data)
+      }
+    )
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   // add search button click handler here
   const searchButton = document.getElementById('search')
 
-  searchButton.addEventListener('click', searchUsers)
+  searchButton.addEventListener('click', searchUsersHandler)
 })
