@@ -1,0 +1,19 @@
+{
+  "name": "wg-stats",
+  "version": "1.0.0",
+  "description": "The Wargaming User stats single page application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ABKorotky/module-two-boilerplate.git"
+  },
+  "author": "alexander korotky, mikhael martinevsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ABKorotky/module-two-boilerplate/issues"
+  },
+  "homepage": "https://github.com/ABKorotky/module-two-boilerplate#readme"
+}
