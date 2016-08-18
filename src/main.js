@@ -33,6 +33,10 @@ function loadUsers(username) {
     });
 }
 
+function loadUderData(account_id) {
+    console.log('loadUderData');
+}
+
 function renderSpinner(domNode) {
   // clean all content of passed node and then render element with `spinner` classname
     domNode.innerHTML = '<div class="spinner"></div>'
@@ -52,7 +56,7 @@ function renderFoundAccounts(accounts) {
 }
 
 function renderFoundAccount({account_id, nickname}) {
-    return `<div>${account_id} - ${nickname}</div>`
+    return `<div class="js-user" data-account-id="${account_id}">${nickname}</div>`
 }
 
 function renderError(respData) {
@@ -65,13 +69,20 @@ function searchUsersHandler() {
   const searchResultsEl = document.getElementById('search-results');
 
   renderSpinner(searchResultsEl);
-  return loadUsers(userName.value)
+  loadUsers(userName.value)
     .then(resp_data => {
         if (resp_data.status == "error") {
                 searchResultsEl.innerHTML = renderError(resp_data);
             } else {
         searchResultsEl.innerHTML = renderFoundAccounts(resp_data.data)
-    }
+        }
+        /* attach handlers*/
+        let usersCollection = document.getElementsByClassName('js-user');
+        for (let user of usersCollection) {
+            user.addEventListener('click', event => {
+            let account_id = event.currentTarget.dataAccountId;
+            loadUderData(account_id);
+        })}
       }
     )
 }
