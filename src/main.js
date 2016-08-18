@@ -87,6 +87,15 @@ function renderUserData(userData) {
     return ''
 }
 
+function markActive(element) {
+    const activeEl = document.getElementsByClassName('active-user');
+    if (activeEl.length) {
+        activeEl[0].classList.remove('active-user')
+    }
+
+    element.classList.add('active-user');
+}
+
 function searchUsersHandler() {
   console.log('Search Users');
   const userName = document.getElementById('username');
@@ -106,7 +115,7 @@ function searchUsersHandler() {
         for (let user of usersCollection) {
             user.addEventListener('click', event => {
             let account_id = event.currentTarget.dataset.accountId;
-
+                markActive(event.currentTarget);
                 renderSpinner(userDataEl);
 
             const userData =loadUserData(account_id);
