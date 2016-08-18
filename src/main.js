@@ -32,6 +32,17 @@ function renderSearchResult(accounts) {
   // Note! it's already exist. See index.html for more info.
   // Each search result item should be rendered
   // inside node with `search-results_item` class name.
+  const searchResultsEl = document.getElementById('search-results');
+
+  let htmlCache = '';
+  for (let account of accounts) {
+      
+  }
+
+}
+
+function renderSearchAccount(account) {
+    return '<div></div>'
 }
 
 function searchUsers() {
