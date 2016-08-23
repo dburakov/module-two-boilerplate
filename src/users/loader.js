@@ -10,7 +10,7 @@ import { buildUrl } from "../wg-public-api";
 const USERS_PATH = "/account/list/";
 
 
-export default function(userName) {
-    let url = buildUrl(USERS_PATH, {search: userName});
-    return makeRequest(url);
-};
+export default function (userName) {
+  const url = buildUrl(USERS_PATH, { search: userName });
+  return makeRequest(url);
+}

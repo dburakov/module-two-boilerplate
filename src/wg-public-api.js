@@ -9,10 +9,10 @@ const GAME = "wot";
 
 
 function buildUrl(path, queryParams) {
-    let queryStr = buildQueryStr(queryParams);
-    return `${API_PROXY_URL}/${GAME}${path}${queryStr}`;
+  const queryStr = buildQueryStr(queryParams);
+  return `${API_PROXY_URL}/${GAME}${path}${queryStr}`;
 }
 
 export {
-    buildUrl
+    buildUrl,
 };
