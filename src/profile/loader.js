@@ -3,7 +3,7 @@
  */
 
 
-import { makeRequest, buildQueryStr } from '../core/request';
+import { makeRequest } from '../core/request';
 import { buildUrl } from '../wg-public-api';
 
 
