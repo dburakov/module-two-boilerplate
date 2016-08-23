@@ -1,14 +1,21 @@
 
-function renderFoundAccount({ account_id: accountId, nickname }) {
-  return `<div class="js-user" data-account-id="${accountId}">${nickname}</div>`;
+function renderFoundAccount(i, { account_id: accountId, nickname }) {
+  return `<tr class="js-user" data-account-id="${accountId}">
+                <td>${i}</td><td><span class="glyphicon glyphicon-user"></span> ${nickname}</td>
+          </tr>`;
 }
 
 export default function (accounts) {
-  let htmlCache = "";
+  const rows = [];
+  let i = 1;
 
   for (const account of accounts) {
-    htmlCache += renderFoundAccount(account);
+    rows.push(renderFoundAccount(i, account));
+    i++;
   }
 
-  return htmlCache;
+  return `<table class="table table-condensed">
+                <thead><tr><th>#</th><th>Name</th></tr></thead>
+                <tbody>${rows.join("")}</tbody>
+          </table>`;
 }

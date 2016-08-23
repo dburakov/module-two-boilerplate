@@ -1,11 +1,3 @@
-body {
-  font-family: verdana;
-  background-color: #ccc;
-}
-
-.search_field {
-  width: 220px;
-}
 
 .spinner {
   width: 64px;
@@ -13,22 +5,4 @@ body {
   margin: auto;
   background: url(./images/spinner.gif) no-repeat;
   background-size: 64px 64px;
-}
-
-.search-results_item {
-    margin: 8px 0 0;
-}
-
-.search-results {
-    float:left;
-    width: 50%;
-}
-
-.user-stats {
-    float:left;
-    width: 50%;
-}
-
-.active-user {
-    color: red;
 }
