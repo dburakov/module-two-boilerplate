@@ -2,8 +2,8 @@ import "./main.css";
 import loadUsersData from "./users/loader";
 import loadUserProfile from "./profile/loader";
 import { renderSpinner, renderError } from "./core/view";
-import { renderFoundAccounts } from "./users/view";
-import { renderUserData } from "./profile/view";
+import renderFoundAccounts from "./users/view";
+import renderUserData from "./profile/view";
 
 
 function markActive(element) {

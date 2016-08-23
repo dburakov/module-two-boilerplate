@@ -1,5 +1,5 @@
 
-function renderFoundAccount({ accountId, nickname }) {
+function renderFoundAccount({ account_id: accountId, nickname }) {
   return `<div class="js-user" data-account-id="${accountId}">${nickname}</div>`;
 }
 

@@ -4,7 +4,7 @@
 
 
 import { makeRequest } from "../core/request";
-import { buildUrl } from "../wg-public-api";
+import buildUrl from "../wg-public-api";
 
 
 const USERS_PATH = "/account/list/";

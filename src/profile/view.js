@@ -2,9 +2,9 @@
 function renderUserStatistics(stat) {
   return `
         <p>Battles = ${stat.battles};</p>
-        <p>Wins percent = ${stat.wins} / ${stat.battles} * 100};</p>
-        <p>Average XP = ${stat.xp} / ${stat.battles};</p>
-        <p>Average XP = ${stat.damage_dealt} / ${stat.battles};</p>
+        <p>Wins percent = ${(stat.wins / stat.battles) * 100};</p>
+        <p>Average XP = ${stat.xp / stat.battles};</p>
+        <p>Average XP = ${stat.damage_dealt / stat.battles};</p>
     `;
 }
 

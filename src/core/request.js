@@ -18,7 +18,7 @@ function makeRequest(url) {
 
 function buildQueryStr(queryParams) {
   const parts = [];
-  for (const prop of queryParams.keys()) {
+  for (const prop of Object.keys(queryParams)) {
     parts.push(`${prop}=${queryParams[prop]}`);
   }
   return `?${parts.join("&")}`;
