@@ -1,5 +1,9 @@
 
-function renderFoundAccounts(accounts) {
+function renderFoundAccount({ accountId, nickname }) {
+  return `<div class="js-user" data-account-id="${accountId}">${nickname}</div>`;
+}
+
+export default function (accounts) {
   let htmlCache = "";
 
   for (const account of accounts) {
@@ -8,11 +12,3 @@ function renderFoundAccounts(accounts) {
 
   return htmlCache;
 }
-
-function renderFoundAccount({ account_id, nickname }) {
-  return `<div class="js-user" data-account-id="${account_id}">${nickname}</div>`;
-}
-
-export {
-  renderFoundAccounts,
-};

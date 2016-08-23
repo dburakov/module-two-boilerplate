@@ -8,11 +8,7 @@ const API_PROXY_URL = "http://188.166.73.133/wg-api";
 const GAME = "wot";
 
 
-function buildUrl(path, queryParams) {
+export default function (path, queryParams) {
   const queryStr = buildQueryStr(queryParams);
   return `${API_PROXY_URL}/${GAME}${path}${queryStr}`;
 }
-
-export {
-    buildUrl,
-};

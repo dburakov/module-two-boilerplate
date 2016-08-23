@@ -3,7 +3,8 @@
   "rules": {
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
     "semi": ["error", "always"],
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "no-param-reassign": ["error", { "props": false }]
   },
   "extends": "airbnb",
   "plugins": [
