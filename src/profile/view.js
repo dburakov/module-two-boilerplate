@@ -2,7 +2,6 @@
 function renderUserStatistics(stat) {
   return `<h3>Battles <span class="label label-default">${stat.battles}</span></h3>
 <h3>Wins percent <span class="label label-default"> ${(stat.wins / stat.battles) * 100}</span></h3>
-<h3>Average XP <span class="label label-default"> ${stat.xp / stat.battles}</span></h3>
 <h3>Average XP <span class="label label-default"> ${stat.xp / stat.battles}</span></h3>`;
 }
 
