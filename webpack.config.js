@@ -24,14 +24,15 @@ module.exports = {
                 test: /\.css$/,
                 loaders: ['style', 'css'],
                 include: appPath
-            },{
+            },
+            {
                 test: /\.(png|jpg|gif)$/,
                 loaders: ['file'],
                 include: appPath
             },
             {
                 test: /\.js$/,
-                loaders: ['babel-loader']
+                loaders: ['babel-loader', 'eslint']
             }
         ]
     },
