@@ -28,6 +28,10 @@ module.exports = {
                 test: /\.(png|jpg|gif)$/,
                 loaders: ['file'],
                 include: appPath
+            },
+            {
+                test: /\.js$/,
+                loaders: ['babel-loader']
             }
         ]
     },
