@@ -23,12 +23,12 @@ module.exports = {
             {
                 test: /\.css$/,
                 loaders: ['style', 'css'],
-                include: appPath
+                include: [appPath, '/']
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|eot|ttf|svg|woff|woff2)$/,
                 loaders: ['file'],
-                include: appPath
+                include: [appPath, '/']
             },
             {
                 test: /\.js$/,

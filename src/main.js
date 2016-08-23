@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.css";
 import loadUsersData from "./users/loader";
 import loadUserProfile from "./profile/loader";
