@@ -2,44 +2,10 @@ require('./main.css');
 
 import loadUsersData from './users/loader';
 import loadUserProfile from './profile/loader';
+import { renderSpinner, renderError } from './core/view';
+import { renderFoundAccounts } from './users/view';
+import { renderUserData } from './profile/view';
 
-
-function renderSpinner(domNode) {
-    domNode.innerHTML = '<div class="spinner"></div>'
-}
-
-function renderFoundAccounts(accounts) {
-    let htmlCache = '';
-
-    for (let account of accounts) {
-      htmlCache += renderFoundAccount(account)
-    }
-
-    return htmlCache;
-}
-
-function renderFoundAccount({account_id, nickname}) {
-    return `<div class="js-user" data-account-id="${account_id}">${nickname}</div>`
-}
-
-function renderError(respData) {
-    return `<div>${respData.error.message}</div>`
-}
-
-function renderUserData(userData) {
-    return `
-        <h1>${userData.nickname}<sup>${userData.global_rating}</sup></h1>
-        ${renderUserStatistics(userData.statistics.all)}`;
-}
-
-function renderUserStatistics(stat) {
-    return `
-        <p>Battles = ${stat.battles};</p>
-        <p>Wins percent = ${stat.wins/stat.battles*100};</p>
-        <p>Average XP = ${stat.xp/stat.battles};</p>
-        <p>Average XP = ${stat.damage_dealt/stat.battles};</p>
-    `;
-}
 
 function markActive(element) {
     const activeEl = document.getElementsByClassName('active-user');
