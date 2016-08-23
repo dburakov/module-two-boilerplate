@@ -1,5 +1,4 @@
-require("./main.css");
-
+import "./main.css";
 import loadUsersData from "./users/loader";
 import loadUserProfile from "./profile/loader";
 import { renderSpinner, renderError } from "./core/view";
@@ -23,24 +22,24 @@ function searchUsersHandler() {
 
   renderSpinner(searchResultsEl);
   loadUsersData(userName.value)
-    .then(resp_data => {
-      if (resp_data.status == "error") {
-        searchResultsEl.innerHTML = renderError(resp_data);
+    .then(respData => {
+      if (respData.status === "error") {
+        searchResultsEl.innerHTML = renderError(respData);
       } else {
-        searchResultsEl.innerHTML = renderFoundAccounts(resp_data.data);
+        searchResultsEl.innerHTML = renderFoundAccounts(respData.data);
       }
         /* attach handlers*/
       const usersCollection = document.getElementsByClassName("js-user");
       for (const user of usersCollection) {
         user.addEventListener("click", event => {
-          const account_id = event.currentTarget.dataset.accountId;
+          const accountId = event.currentTarget.dataset.accountId;
           markActive(event.currentTarget);
           renderSpinner(userDataEl);
 
-          const userData = loadUserProfile(account_id);
+          const userData = loadUserProfile(accountId);
 
-          userData.then(user_json => {
-            userDataEl.innerHTML = renderUserData(user_json.data[account_id]);
+          userData.then(userJson => {
+            userDataEl.innerHTML = renderUserData(userJson.data[accountId]);
           });
         }); }
     }
