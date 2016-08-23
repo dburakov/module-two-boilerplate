@@ -8,12 +8,12 @@ import renderUserData from "./profile/view";
 
 
 function markActive(element) {
-  const activeEl = document.getElementsByClassName("active-user");
+  const activeEl = document.getElementsByClassName("info");
   if (activeEl.length) {
-    activeEl[0].classList.remove("active-user");
+    activeEl[0].classList.remove("info");
   }
 
-  element.classList.add("active-user");
+  element.classList.add("info");
 }
 
 function searchUsersHandler() {

@@ -12,7 +12,8 @@ export default function (userData) {
     <h3 class="panel-title">Statistic</h3>
   </div>
   <div class="panel-body">
-    <h1><span class="glyphicon glyphicon-star-empty"></span> <span class="label label-success">${userData.global_rating}</span></h1>
+    <h1><span class="glyphicon glyphicon-star-empty"></span>
+    <span class="label label-success">${userData.global_rating}</span></h1>
     ${renderUserStatistics(userData.statistics.all)}
   </div>
 </div>`;
