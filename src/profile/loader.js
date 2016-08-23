@@ -3,11 +3,11 @@
  */
 
 
-import { makeRequest } from '../core/request';
-import { buildUrl } from '../wg-public-api';
+import { makeRequest } from "../core/request";
+import { buildUrl } from "../wg-public-api";
 
 
-const USERS_PATH = '/account/info/';
+const USERS_PATH = "/account/info/";
 
 
 export default function(accountId) {

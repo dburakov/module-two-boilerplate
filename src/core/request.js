@@ -28,7 +28,7 @@ function buildQueryStr(queryParams) {
             parts.push(`${prop}=${queryParams[prop]}`);
         }
     }
-    return `?${parts.join('&')}`;
+    return `?${parts.join("&")}`;
 }
 
 
