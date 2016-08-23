@@ -1,15 +1,19 @@
 
 function renderUserStatistics(stat) {
-  return `
-        <p>Battles = ${stat.battles};</p>
-        <p>Wins percent = ${(stat.wins / stat.battles) * 100};</p>
-        <p>Average XP = ${stat.xp / stat.battles};</p>
-        <p>Average XP = ${stat.damage_dealt / stat.battles};</p>
-    `;
+  return `<h3>Battles <span class="label label-default">${stat.battles}</span></h3>
+<h3>Wins percent <span class="label label-default"> ${(stat.wins / stat.battles) * 100}</span></h3>
+<h3>Average XP <span class="label label-default"> ${stat.xp / stat.battles}</span></h3>
+<h3>Average XP <span class="label label-default"> ${stat.xp / stat.battles}</span></h3>`;
 }
 
 export default function (userData) {
-  return `
-        <h1>${userData.nickname}<sup>${userData.global_rating}</sup></h1>
-        ${renderUserStatistics(userData.statistics.all)}`;
+  return `<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Statistic</h3>
+  </div>
+  <div class="panel-body">
+    <h1><span class="glyphicon glyphicon-star-empty"></span> <span class="label label-success">${userData.global_rating}</span></h1>
+    ${renderUserStatistics(userData.statistics.all)}
+  </div>
+</div>`;
 }
