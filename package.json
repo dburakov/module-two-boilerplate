@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "NODE_PATH=./src mocha --compilers js:babel-core/register --require jsdom-global/register --require whatwg-fetch/fetch --recursive tests"
+    "test": "NODE_PATH=./src mocha --compilers js:babel-core/register --require jsdom-global/register --require whatwg-fetch/fetch --recursive tests",
+    "test-coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "mocha": "^3.0.2",
     "mocha-jsdom": "^1.1.0",
     "mockery": "^1.7.0",
+    "nyc": "^8.1.0",
     "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",

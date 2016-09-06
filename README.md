@@ -1,2 +1,6 @@
-# module-two-boilerplate
-It's a boilerplate for future shiny app
+# module-two
+
+    npm install
+    npm start
+    npm test
+    npm run test-coverage
