@@ -14,7 +14,7 @@ export default function (accounts) {
     i++;
   }
 
-  return `<table class="table table-condensed table-hover">
+  return `<table class="table table-condensed table-hover js-user-list">
                 <thead><tr><th>#</th><th>Name</th></tr></thead>
                 <tbody>${rows.join("")}</tbody>
           </table>`;

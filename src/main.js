@@ -42,9 +42,9 @@ function searchUsersHandler() {
           userData.then(userJson => {
             userDataEl.innerHTML = renderUserData(userJson.data[accountId]);
           });
-        }); }
-    }
-    );
+        });
+      }
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

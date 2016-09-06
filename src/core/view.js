@@ -9,7 +9,7 @@ function renderSpinner(domNode) {
 
 
 function renderError(respData) {
-  return `<div>${respData.error.message}</div>`;
+  return `<div class="error">${respData.error.message}</div>`;
 }
 
 

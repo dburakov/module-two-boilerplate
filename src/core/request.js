@@ -4,7 +4,7 @@
 
 
 function makeRequest(url) {
-  return fetch(url, { method: "GET" })
+  return window.fetch(url, { method: "GET" })
       .then(response => response.json())
       .catch(() => ({
         status: "error",
